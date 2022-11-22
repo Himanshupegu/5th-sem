@@ -3,13 +3,11 @@
 
 int checkHit(int incomingPage, int queue[], int occupied)
 {
-
     for (int i = 0; i < occupied; i++)
     {
         if (incomingPage == queue[i])
             return 1;
     }
-
     return 0;
 }
 void printFrame(int queue[], int occupied)
@@ -19,20 +17,18 @@ void printFrame(int queue[], int occupied)
 }
 int main()
 {
-    //    int incomingStream[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1};
-    //    int incomingStream[] = {1, 2, 3, 2, 1, 5, 2, 1, 6, 2, 5, 6, 3, 1, 3, 6, 1, 2, 4, 3};
-    int incomingStream[] = {1, 2, 3, 2, 1, 5, 2, 1, 6, 2, 5, 6, 3, 1, 3};
+    int incomingStream[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
 
-    int n = sizeof(incomingStream) / sizeof(incomingStream[0]);
-    int frames = 3;
-    int queue[n];
-    int distance[n];
+    int pages = sizeof(incomingStream) / sizeof(incomingStream[0]);
+    int frames = 4;
+    int queue[pages];
+    int distance[pages];
     int occupied = 0;
     int pagefault = 0;
 
     printf("Page\t Frame1 \t Frame2 \t Frame3\n");
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < pages; i++)
     {
         printf("%d:  \t\t", incomingStream[i]);
         // what if currently in frame 7
@@ -64,7 +60,6 @@ int main()
                 for (int k = i - 1; k >= 0; k--)
                 {
                     ++distance[j];
-
                     if (queue[j] == incomingStream[k])
                         break;
                 }
@@ -81,9 +76,9 @@ int main()
             printFrame(queue, occupied);
             pagefault++;
         }
-
         printf("\n");
     }
-    printf("Page Fault: %d", pagefault);
+    printf("\nPage Fault: %d", pagefault);
+    printf("\nPage Hits: %d", pages - pagefault);
     return 0;
 }

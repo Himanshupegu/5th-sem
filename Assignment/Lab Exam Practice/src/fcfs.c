@@ -1,4 +1,3 @@
-// FCFS scheduling algo
 #include <stdio.h>
 
 void findWaitingTime(int pid[], int n, int bt[], int wt[], int at[])
@@ -46,19 +45,12 @@ void findAvgTime(int pid[], int n, int bt[], int at[])
 
 int main()
 {
-  int n;
-  printf("\nEnter the No. of processes :");
-  scanf("%d", &n);
-  int pid[n], bt[n], at[n];
-  for (int i = 0; i < n; i++)
-  {
-    printf("Enter the Process id: ");
-    scanf("%d", &pid[i]);
-    printf("\tEnter the Arrival and Brush Time for process P[%d]:", pid[i]);
-    scanf(" %d", &at[i]);
-    scanf(" %d", &bt[i]);
-  }
+
+  int pid[] = {1, 2, 3, 4};
+  int at[] = {0, 1, 4, 5};
+  int bt[] = {2, 2, 3, 4};
+  int n = sizeof(pid) / sizeof(pid[0]);
+
   findAvgTime(pid, n, bt, at);
   return 0;
 }
-

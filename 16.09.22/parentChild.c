@@ -22,5 +22,4 @@ int main()
   }
 }
 
-
 //./a.out & ps

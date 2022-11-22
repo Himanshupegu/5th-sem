@@ -31,11 +31,11 @@ int predict(int incomingStream[], int frameItems[], int page, int index, int fra
   for (int i = 0; i < frame_occupied; i++)
   {
     int j;
-    for (j = index; j < page; j++)
+    for (j = index; j >= 0; j--)
     {
       if (frameItems[i] == incomingStream[j])
       {
-        if (j > farthest)
+        if (j < farthest)
         {
           farthest = j;
           result = i;
@@ -77,7 +77,7 @@ void optimalPage(int incomingStream[], int page, int frameItems[], int frames)
     // this will check and replace the page which is not used in longest dimension of time in future
     else
     {
-      int pos = predict(incomingStream, frameItems, page, i + 1, frame_occupied);
+      int pos = predict(incomingStream, frameItems, page, i - 1, frame_occupied);
       frameItems[pos] = incomingStream[i];
       printCurrFrames(incomingStream[i], frameItems, frame_occupied, frames);
     }
@@ -88,7 +88,7 @@ void optimalPage(int incomingStream[], int page, int frameItems[], int frames)
 
 int main()
 {
-  int incomingStream[] = {7, 7, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
+  int incomingStream[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
   int page = sizeof(incomingStream) / sizeof(incomingStream[0]);
   int frames = 4;
   int frameItems[frames];

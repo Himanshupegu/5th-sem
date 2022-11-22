@@ -10,7 +10,7 @@ int main()
   remain = n;
   for (i = 0; i < n; i++)
   {
-    printf("Enter Arrival Time and Burst Time for Process Process Number %d :", i + 1);
+    printf("Enter Arrival Time and Burst Time for Process Number %d :", i + 1);
     scanf("%d", &at[i]);
     scanf("%d", &bt[i]);
     rt[i] = bt[i];
