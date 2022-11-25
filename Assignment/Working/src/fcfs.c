@@ -61,4 +61,3 @@ int main()
   findAvgTime(pid, n, bt, at);
   return 0;
 }
-
